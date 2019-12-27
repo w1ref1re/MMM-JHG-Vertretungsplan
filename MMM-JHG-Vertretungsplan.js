@@ -8,9 +8,11 @@ Module.register("MMM-JHG-Vertretungsplan", {
         home_url: "Ver_Kla_1.htm"
     },
 
-    getScripts: [
-        this.File("fetch_jhg.py")
-    ],
+    getScripts: function() {
+        return [
+        this.file("fetch_jhg.py")
+        ]
+    },
 
     start: function() {
         Log.log(this.name + " is started");
@@ -20,8 +22,9 @@ Module.register("MMM-JHG-Vertretungsplan", {
 
     socketNotificationReceived: function(notification, payload) {
         switch (notification) {
-            case "update-vertretungen":
+            case "update_vertretungen":
                 this.vertretungen = payload;
+                this.updateDom(0.5);
                 break;
         }
     },
@@ -31,5 +34,9 @@ Module.register("MMM-JHG-Vertretungsplan", {
 		wrapper.innerHTML = this.vertretungen + "this is the JHG module";
 		return wrapper;
     },
+
+    updateVertretungen: function() {
+        this.sendSocketNotification("update_vertretungen", {script: {path: this.file("fetch_jhg.py")}})
+    }, 
 
 });
