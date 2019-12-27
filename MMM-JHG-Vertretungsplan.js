@@ -14,6 +14,16 @@ Module.register("MMM-JHG-Vertretungsplan", {
 
     start: function() {
         Log.log(this.name + " is started");
-    }
+
+        this.vertretungen = {};
+    },
+
+    socketNotificationReceived: function(notification, payload) {
+        switch (notification) {
+            case "update-vertretungen":
+                this.vertretungen = payload;
+                break;
+        }
+    },
 
 });
