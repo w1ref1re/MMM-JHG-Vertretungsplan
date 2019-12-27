@@ -18,6 +18,8 @@ Module.register("MMM-JHG-Vertretungsplan", {
         Log.log(this.name + " is started");
 
         this.vertretungen = {};
+
+        setTimeout(updateVertretungen, 1000);
     },
 
     socketNotificationReceived: function(notification, payload) {
