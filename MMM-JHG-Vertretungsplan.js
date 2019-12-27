@@ -28,7 +28,7 @@ Module.register("MMM-JHG-Vertretungsplan", {
 
     getDom: function() {
         var wrapper = document.createElement("div");
-		wrapper.innerHTML = this.vertretungen;
+		wrapper.innerHTML = this.vertretungen + "this is the JHG module";
 		return wrapper;
     },
 
