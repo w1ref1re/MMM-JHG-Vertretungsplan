@@ -32,6 +32,7 @@ Module.register("MMM-JHG-Vertretungsplan", {
 
     getDom: function() {
         var wrapper = document.createElement("div");
+        wrapper.className = "region";
         wrapper.appendChild(this.createTables(this.vertretungen));
 		return wrapper;
     },
@@ -71,10 +72,10 @@ Module.register("MMM-JHG-Vertretungsplan", {
 
         var table = document.createElement("table");
         table.setAttribute("id", "JHG-vertretungsplan-table");
-        table.className = "jhg-table";
+        table.className = "table";
 
         var row = document.createElement("tr");
-        row.className = "medium bold headline";
+        row.className = "medium headline";
         for (var headline in data[0]) {
             var th = document.createElement("th");
             var p = document.createElement("p");
