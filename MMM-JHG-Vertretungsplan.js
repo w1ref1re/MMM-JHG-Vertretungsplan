@@ -36,7 +36,7 @@ Module.register("MMM-JHG-Vertretungsplan", {
     },
 
     socketNotificationReceived: function(notification, payload) {
-        Log.log(JSON.stringify(payload));
+        //Log.log(JSON.stringify(payload));
 
         switch (notification) {
             case "GET_VERTRETUNGEN":
