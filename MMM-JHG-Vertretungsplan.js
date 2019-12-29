@@ -55,7 +55,7 @@ Module.register("MMM-JHG-Vertretungsplan", {
         table.setAttribute("id", "JHG-vertretungsplan-table");
 
         var row = document.createElement("tr");
-        for (var headline in data[0][0]) {
+        for (var headline in data[0]) {
             var th = document.createElement("th");
             th.innerHTML = headline;
             row.appendChild(th);
@@ -63,12 +63,12 @@ Module.register("MMM-JHG-Vertretungsplan", {
 
         table.appendChild(row);
 
-        for (var vertretung in data[c]) {
+        for (var vertretung in data) {
             var row = document.createElement("tr");
 
-            for (var item in data[c][vertretung]) {
+            for (var item in vertretung) {
                 var td = document.createElement("td");
-                td.innerHTML(data[c][vertretung][item])
+                td.innerHTML(vertretung[item])
                 row.appendChild(td);
                 
             }
