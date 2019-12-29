@@ -2,18 +2,21 @@
     text-align: center;
 }
 
-td {
+.headline>td {
+    padding-bottom: 2px;
+    padding-top: 0;
     padding-left: 4px;
     padding-right: 4px;
-
-    height: 20px;
 }
 
 .row {
+    height: 5px;
     text-align: center;
 }
 
 .row > td {
     padding-bottom: 2px;
     padding-top: 0;
+    padding-left: 4px;
+    padding-right: 4px;
 }
