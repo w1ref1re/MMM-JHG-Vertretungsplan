@@ -63,6 +63,8 @@ Module.register("MMM-JHG-Vertretungsplan", {
 
 
     createTables: function(data) {
+        Log.log(JSON.stringify(data));
+
         var table = document.createElement("table");
         table.setAttribute("id", "JHG-vertretungsplan-table");
 
