@@ -39,7 +39,7 @@ Module.register("MMM-JHG-Vertretungsplan", {
 
         switch (notification) {
             case "GET_VERTRETUNGEN":
-                this.vertretungen = {"payload": payload};
+                this.vertretungen = payload;
                 this.updateDom();
                 break;
         }
