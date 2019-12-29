@@ -90,14 +90,14 @@ Module.register("MMM-JHG-Vertretungsplan", {
             for (var vertretung in data[c]) {
                 var row = document.createElement("tr");
 
-                console.log(data[c][vertretung]);
+                //console.log(data[c][vertretung]);
 
                 for (var item in data[c][vertretung]) {
                     var td = createTD(data[c][vertretung][item]);
                     row.appendChild(td);
                     
-                    console.log(item);
-                    console.log(data[c][vertretung][item]);
+                    //console.log(item);
+                    //console.log(data[c][vertretung][item]);
                 }
 
                 table.appendChild(row);
