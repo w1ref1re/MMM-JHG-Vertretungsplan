@@ -35,25 +35,6 @@ def is_table_relevant(tag):
 
 # main methods
 
-def init(config_str):
-    ''' 
-    reads the config string and sets config data
-    config_str: json string
-    '''
-    global config, classes, base_url, home_url
-    config = json.loads(config_str)
-
-    if "classes" in config:
-        classes = config["classes"]
-
-    if "base_url" in config:
-        base_url = config["base_url"]
-
-    if "home_url" in config:
-        home_url = config["home_url"]
-
-
-
 def getVertretungen():
     '''
     main method to get vertretungen
@@ -102,9 +83,13 @@ def _cleanString(string):
 
 # node_helper is invoking the script
 if __name__ == "__main__":
+    global classes, base_url, home_url
     classes = sys.argv[1]
     base_url = sys.argv[2]
     home_url = sys.argv[3]
 
-    print(classes, base_url, home_url)
+    #print(classes, base_url, home_url)
+
+    print(getVertretungen()[1], end="")
+
     sys.stdout.flush()
