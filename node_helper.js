@@ -10,15 +10,18 @@ module.exports = NodeHelper.create({
 
     socketNotificationReceived: function(notification, payload) {
         switch(notification) {
-            case "update_vertretungen":
-                Log.log("Updating vertretungen...");
+            case "GET_VERTRETUNGEN":
                 
-                var process = spawn("python", [payload.script.path]);
+                /*var process = spawn("python", [payload.script.path]);
                 
                 process.on("data", (data) => {
                     Log.log("New Vertretungen: " + data);
                     this.sendSocketNotification("update_vertretungsplan", data);
-                });
+                });*/
+
+                var data = {"6b": "Keine Vertretungen"};
+
+                this.sendSocketNotification("GET_VERTRETUNGEN", data);
 
 
                 break;

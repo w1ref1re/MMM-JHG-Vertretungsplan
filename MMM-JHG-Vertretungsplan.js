@@ -8,37 +8,37 @@ Module.register("MMM-JHG-Vertretungsplan", {
         home_url: "Ver_Kla_1.htm"
     },
 
-    getScripts: function() {
+   /* getScripts: function() {
         return [
         this.file("fetch_jhg.py")
         ]
-    },
+    },*/
 
     start: function() {
         Log.log(this.name + " is started");
 
         this.vertretungen = {};
 
-        setTimeout(updateVertretungen, 1000);
+        var timer = setInterval(updateVertretungen, 1000);
     },
 
     socketNotificationReceived: function(notification, payload) {
         switch (notification) {
-            case "update_vertretungen":
+            case "GET_VERTRETUNGEN":
                 this.vertretungen = payload;
-                this.updateDom(0.5);
+                this.updateDom();
                 break;
         }
     },
 
     getDom: function() {
         var wrapper = document.createElement("div");
-		wrapper.innerHTML = this.vertretungen + "this is the JHG module";
+		wrapper.innerHTML = JSON.stringify(this.vertretungen);
 		return wrapper;
     },
 
     updateVertretungen: function() {
-        this.sendSocketNotification("update_vertretungen", {script: {path: this.file("fetch_jhg.py")}})
+        this.sendSocketNotification("GET_VERTRETUNGEN", {script: {path: this.file("fetch_jhg.py")}})
     }, 
 
 });
