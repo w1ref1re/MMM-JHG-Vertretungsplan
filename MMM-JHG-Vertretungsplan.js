@@ -77,49 +77,38 @@ Module.register("MMM-JHG-Vertretungsplan", {
         var row = document.createElement("tr");
         row.className = "small light bright headline";
 
-        var i = 0
         for (var headline in data[0]) {
             var th = document.createElement("th");
             var p = document.createElement("p");
 
-            if (i % 2 == 0) {
-                th.className += "bright-col";
-            }
             th.appendChild(p);
 
             p.innerHTML = headline;
             row.appendChild(th);
             
-            i ++;
         }
 
         table.appendChild(row);
 
-        var ii = 0;
+        var i = 0;
         for (var vertretung in data) {
             var row = document.createElement("tr");
 
-            if (ii % 2 == 0) {
+            if (i % 2 == 0) {
                 row.className = "small regular normal row";
             } else {
                 row.className = "small regular bright row";
             }
             
-            var iii = 0;
             for (var item in data[vertretung]) {
                 var td = document.createElement("td");
                 var p = document.createElement("p");
-
-                if (iii % 2 == 0) {
-                    td.className += "bright-col";
-                }
 
                 td.appendChild(p)
 
                 p.innerHTML = data[vertretung][item];
                 row.appendChild(td);
                 
-                iii ++;
             }
 
             table.appendChild(row);
