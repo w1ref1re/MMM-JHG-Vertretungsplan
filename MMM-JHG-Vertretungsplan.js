@@ -75,7 +75,7 @@ Module.register("MMM-JHG-Vertretungsplan", {
         table.className = "table";
 
         var row = document.createElement("tr");
-        row.className = "medium light bright headline";
+        row.className = "small light bright headline";
         for (var headline in data[0]) {
             var th = document.createElement("th");
             var p = document.createElement("p");
