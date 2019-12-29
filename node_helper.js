@@ -12,12 +12,15 @@ module.exports = NodeHelper.create({
         switch(notification) {
             case "GET_VERTRETUNGEN":
                 
-                var process = spawn("python", [payload.script_path, payload.classes, payload.base_url, payload.home_url]);
+                var p = spawn("python", [payload.script_path, payload.classes, payload.base_url, payload.home_url]);
                 
-                /*process.on("stdout", (data) => {
-                    console.log("Test log");
+                p.stdout.on("stdout", (data) => {
                     this.sendSocketNotification("GET_VERTRETUNGEN", data);
-                });*/
+                });
+
+                p.stderr.on('data', (data) => {
+                    this.sendSocketNotification("GET_VERTRETUNGEN", {error: data});
+                });
 
                 var data = {"6b": "Keine Vertretungen"};
                 this.sendSocketNotification("GET_VERTRETUNGEN", data);
