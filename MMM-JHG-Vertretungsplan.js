@@ -14,12 +14,22 @@ Module.register("MMM-JHG-Vertretungsplan", {
         ]
     },*/
 
+    updateVertretungen: function() {
+        this.sendSocketNotification("GET_VERTRETUNGEN", {script: {path: this.file("fetch_jhg.py")}})
+    }, 
+
     start: function() {
         Log.log(this.name + " is started");
 
         this.vertretungen = {};
 
         var timer = setInterval(updateVertretungen, 1000);
+    },
+
+    getDom: function() {
+        var wrapper = document.createElement("div");
+		wrapper.innerHTML = JSON.stringify(this.vertretungen);
+		return wrapper;
     },
 
     socketNotificationReceived: function(notification, payload) {
@@ -30,15 +40,5 @@ Module.register("MMM-JHG-Vertretungsplan", {
                 break;
         }
     },
-
-    getDom: function() {
-        var wrapper = document.createElement("div");
-		wrapper.innerHTML = JSON.stringify(this.vertretungen);
-		return wrapper;
-    },
-
-    updateVertretungen: function() {
-        this.sendSocketNotification("GET_VERTRETUNGEN", {script: {path: this.file("fetch_jhg.py")}})
-    }, 
 
 });
