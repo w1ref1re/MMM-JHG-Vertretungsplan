@@ -1,6 +1,5 @@
 'use strict'
 
-const crypto = require("crypto");
 
 Module.register("MMM-JHG-Vertretungsplan", {
     defaults: {
@@ -42,12 +41,10 @@ Module.register("MMM-JHG-Vertretungsplan", {
 
         switch (notification) {
             case "GET_VERTRETUNGEN":
-                var new_hash = this.hash(payload);
-                if (new_hash !== this.vertretungen_hash) {
-                    Log.log("updated");
-                    this.vertretungen = payload;
-                    this.updateDom();
-                }
+                Log.log("updated");
+                this.vertretungen = payload;
+                this.updateDom();
+                
                 break;
         }
     },
@@ -116,10 +113,6 @@ Module.register("MMM-JHG-Vertretungsplan", {
         }
         
         return list
-    },
-
-    hash: function(object) {
-        return crypto.createHash("md5").update(JSON.stringify(object)).digest("hex");
     },
 
 });
