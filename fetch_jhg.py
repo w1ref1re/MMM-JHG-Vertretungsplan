@@ -4,6 +4,8 @@ import json
 import requests
 from bs4 import BeautifulSoup
 
+import sys
+
 config = {}
 
 classes = ["6b"]
@@ -61,7 +63,7 @@ def getVertretungen():
     soup = BeautifulSoup(page.content)
 
     relevant_tags = soup.find_all(is_tag_relevant)
-    print(relevant_tags)
+    #print(relevant_tags)
 
     vertretungen = {}
     if len(relevant_tags) == 0:
@@ -98,3 +100,11 @@ def _getVertretung(soup):
 def _cleanString(string):
     return string.replace("\n", "").replace("\r", "").replace("\xa0", "").strip()
 
+# node_helper is invoking the script
+if __name__ == "__main__":
+    classes = sys.argv[1]
+    base_url = sys.argv[2]
+    home_url = sys.argv[3]
+
+    print(classes, base_url, home_url)
+    sys.stdout.flush()
