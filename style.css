@@ -3,18 +3,22 @@
 }
 
 .headline {
-    font-style: oblique;
-    font-size: 70%;
+    font-style: bold;
+    font-size: 80%;
     text-align: center;
 }
 
 .row-light {
-    font-size: 50%;
+    background-color: aqua;
+
+    font-size: 70%;
     text-align: center;
 }
 
 .row-dark {
-    font-size: 50%;
+    background-color: royalblue;
+
+    font-size: 70%;
     text-align: center;
 }
 
