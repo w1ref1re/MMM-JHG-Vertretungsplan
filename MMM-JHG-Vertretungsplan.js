@@ -16,10 +16,10 @@ Module.register("MMM-JHG-Vertretungsplan", {
 
 
     start: function() {
-        Log.log(this.name + " is started");
+       /* Log.log(this.name + " is started");
         Log.log(JSON.stringify(this.config));
         Log.log(JSON.stringify(this.data));
-        Log.log(this.file("fetch_jhg.py"));
+        Log.log(this.file("fetch_jhg.py"));'*/
 
         this.vertretungen = {};
 
@@ -35,9 +35,10 @@ Module.register("MMM-JHG-Vertretungsplan", {
     },
 
     socketNotificationReceived: function(notification, payload) {
+        Log.log(JSON.stringify(payload));
+
         switch (notification) {
             case "GET_VERTRETUNGEN":
-                Log.log(JSON.stringify(payload));
                 this.vertretungen = payload;
                 this.updateDom();
                 break;
