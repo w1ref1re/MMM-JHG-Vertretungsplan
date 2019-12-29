@@ -80,9 +80,9 @@ Module.register("MMM-JHG-Vertretungsplan", {
         for (var vertretung in data) {
             var row = document.createElement("tr");
 
-            for (var item in vertretung) {
+            for (var item in data[vertretung]) {
                 var td = document.createElement("td");
-                td.innerHTML = vertretung[item];
+                td.innerHTML = data[vertretung][item];
                 row.appendChild(td);
                 
             }
