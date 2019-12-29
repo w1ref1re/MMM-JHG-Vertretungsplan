@@ -83,7 +83,7 @@ def _cleanString(string):
 
 # node_helper is invoking the script
 if __name__ == "__main__":
-    classes = sys.argv[1]
+    classes = [sys.argv[1]]
     base_url = sys.argv[2]
     home_url = sys.argv[3]
 
