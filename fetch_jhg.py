@@ -69,7 +69,7 @@ def _loadVertretung(tag):
 def _getVertretung(soup):
     tag = soup.find_all(is_table_relevant)[0]
 
-    items = tag.find_all("td")
+    items = tag.find_all("tr")
     vertretungen = []
     for item in items:
         s = _cleanString(str(item.text))
