@@ -23,7 +23,6 @@ Module.register("MMM-JHG-Vertretungsplan", {
         Log.log(this.file("fetch_jhg.py"));'*/
 
         this.vertretungen = {};
-        this.vertretungen_hash = this.hash(this.vertretungen);
 
         var timer = setInterval(() => {
             this.sendSocketNotification("GET_VERTRETUNGEN", {script_path: this.file("fetch_jhg.py"), classes: this.config.classes, base_url: this.config.base_url, home_url: this.config.home_url})
