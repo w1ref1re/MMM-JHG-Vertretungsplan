@@ -16,8 +16,8 @@ Module.register("MMM-JHG-Vertretungsplan", {
 
 
     start: function() {
-       /* Log.log(this.name + " is started");
-        Log.log(JSON.stringify(this.config));
+        Log.log(this.name + " is started");
+       /* Log.log(JSON.stringify(this.config));
         Log.log(JSON.stringify(this.data));
         Log.log(this.file("fetch_jhg.py"));'*/
 
