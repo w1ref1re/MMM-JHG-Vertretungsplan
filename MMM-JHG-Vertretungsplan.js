@@ -21,7 +21,7 @@ Module.register("MMM-JHG-Vertretungsplan", {
        /* Log.log(JSON.stringify(this.config));
         Log.log(JSON.stringify(this.data));
         Log.log(this.file("fetch_jhg.py"));'*/
-        
+
         this.sendSocketNotification("GET_VERTRETUNGEN", {"script_path": this.file("fetch_jhg.py"), "base_url": this.config.base_url, "home_url": this.config.home_url});
 
         this.vertretungen = {};
@@ -74,7 +74,7 @@ Module.register("MMM-JHG-Vertretungsplan", {
 
             for (var item in vertretung) {
                 var td = document.createElement("td");
-                td.innerHTML(vertretung[item])
+                td.innerHTML = vertretung[item];
                 row.appendChild(td);
                 
             }
