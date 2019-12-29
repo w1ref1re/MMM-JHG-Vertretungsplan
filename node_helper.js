@@ -14,7 +14,9 @@ module.exports = NodeHelper.create({
                 
                 //var p = spawn("python3", [payload.script_path, payload.classes, payload.base_url, payload.home_url]);
                 
-                var p = spawn("python3", ["fetch_jhg.py", "d", "f", "5"]);
+                //var p = spawn("python3", ["fetch_jhg.py", "d", "f", "5"]);
+
+                var p = spawn("ls");
 
                 p.stdout.on("data", (data) => {
                     this.sendSocketNotification("GET_VERTRETUNGEN", data);
