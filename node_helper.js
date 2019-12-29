@@ -25,7 +25,7 @@ module.exports = NodeHelper.create({
                 });
                 
                 child.stderr.on('data', (data) => {
-                    this.sendSocketNotification("GET_VERTRETUNGEN", {"error": data});
+                    //this.sendSocketNotification("GET_VERTRETUNGEN", {"error": data});
                     console.error(`stderr: ${data}`);
                 });
                 

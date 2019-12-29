@@ -41,7 +41,7 @@ def getVertretungen():
     '''
     page = requests.get("/".join([base_url, home_url]))    
 
-    soup = BeautifulSoup(page.content)
+    soup = BeautifulSoup(page.content, features="lxml")
 
     relevant_tags = soup.find_all(is_tag_relevant)
     #print(relevant_tags)
