@@ -30,7 +30,7 @@ Module.register("MMM-JHG-Vertretungsplan", {
 
     getDom: function() {
         var wrapper = document.createElement("div");
-		wrapper.innerHTML = JSON.stringify(this.vertretungen);
+        wrapper.appendChild(this.createTables(this.vertretungen));
 		return wrapper;
     },
 
@@ -43,6 +43,72 @@ Module.register("MMM-JHG-Vertretungsplan", {
                 this.updateDom();
                 break;
         }
+    },
+
+
+    createTables: function(data) {
+
+        var createTH = (text) => {
+            var th = document.createElement("th");
+            th.setAttribute("style", "border: 1px solid black;");
+            th.innerHTML = text;
+            return th
+        };
+
+        var createTable = () => {
+            var th = document.createElement("table");
+            th.setAttribute("style", "border: 1px solid black;");
+            return th
+        };
+
+        var createTD = (text) => {
+            var th = document.createElement("td");
+            th.setAttribute("style", "border: 1px solid black;");
+            th.innerHTML = text;
+            return th
+        };
+
+        var list = document.createElement("ul")
+        list.setAttribute("style", "list-style: none;");
+        
+        for (var c in data) {
+            var list_item = document.createElement("li");
+           // list_item.setAttribute("display", "inline");
+
+            var table = createTable();
+            table.setAttribute("id", c);
+
+            var row = document.createElement("tr");
+            for (var headline in data[c][0]) {
+                var th = createTH(headline);
+                row.appendChild(th);
+            }
+
+
+            table.appendChild(row);
+
+            for (var vertretung in data[c]) {
+                var row = document.createElement("tr");
+
+                console.log(data[c][vertretung]);
+
+                for (var item in data[c][vertretung]) {
+                    var td = createTD(data[c][vertretung][item]);
+                    row.appendChild(td);
+                    
+                    console.log(item);
+                    console.log(data[c][vertretung][item]);
+                }
+
+                table.appendChild(row);
+            }
+            
+            list_item.appendChild(table);
+            list.appendChild(list_item);
+
+        }
+        
+        return list
     },
 
 });
