@@ -69,12 +69,28 @@ def _loadVertretung(tag):
 def _getVertretung(soup):
     tag = soup.find_all(is_table_relevant)[0]
 
-    items = tag.find_all("tr")
+    rows = tag.find_all("tr")
+
+    if len(rows) == 0:
+        return {}
+
     vertretungen = []
-    for item in items:
-        s = _cleanString(str(item.text))
-        if len(s) > 0:
-            vertretungen.append(str(s))
+    keys = rows[0]
+    for row in rows[1:]:
+        vertretung = {}
+        items = row.find_all("td")
+        for i, item in enumerate(items):
+            vertretung[keys[i]] = item.text
+        
+        vertretungen.append(vertretung)
+
+
+    #items = tag.find_all("tr")
+    #vertretungen = []
+    #for item in items:
+    #    s = _cleanString(str(item.text))
+    #    if len(s) > 0:
+    #        vertretungen.append(str(s))
 
     return vertretungen
 
