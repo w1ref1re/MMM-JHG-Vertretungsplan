@@ -15,8 +15,8 @@ module.exports = NodeHelper.create({
 
                 const child_process = require('child_process');
 
-                //const child = child_process.spawn("python3", ["MMM-JHG-Vertretungsplan/fetch_jhg.py", "h", "4", "f"]);
-                const child = child_process.spawn("ls");
+                const child = child_process.spawn("python3", ["modules/MMM-JHG-Vertretungsplan/fetch_jhg.py", "h", "4", "f"]);
+                //const child = child_process.spawn("ls");
 
                 child.stdout.on('data', (data) => {
                     this.sendSocketNotification("GET_VERTRETUNGEN", `${data}`);
