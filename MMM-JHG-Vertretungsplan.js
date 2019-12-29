@@ -53,7 +53,7 @@ Module.register("MMM-JHG-Vertretungsplan", {
 
         switch (notification) {
             case "GET_VERTRETUNGEN":
-                Log.log("updated");
+                //Log.log("updated");
                 this.vertretungen = payload;
                 this.updateDom();
                 
@@ -63,7 +63,7 @@ Module.register("MMM-JHG-Vertretungsplan", {
 
 
     createTables: function(data) {
-        Log.log(JSON.stringify(data));
+        //Log.log(JSON.stringify(data));
 
         var table = document.createElement("table");
         table.setAttribute("id", "JHG-vertretungsplan-table");
