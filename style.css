@@ -1,5 +1,6 @@
-.jhg-table {
-
+.jhg-table *{
+    margin: 0;
+    padding: 4px;
 }
 
 .headline {
@@ -9,14 +10,12 @@
 }
 
 .row-light {
-    background-color: aqua;
-
     font-size: 70%;
     text-align: center;
 }
 
 .row-dark {
-    background-color: royalblue;
+    background-color: #0a0a0a;
 
     font-size: 70%;
     text-align: center;
