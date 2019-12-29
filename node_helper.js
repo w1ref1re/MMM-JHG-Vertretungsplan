@@ -21,7 +21,7 @@ module.exports = NodeHelper.create({
 
                 child.stdout.on('data', (data) => {
                     this.sendSocketNotification("GET_VERTRETUNGEN", `${JSON.parse(data)}`);
-                    console.log(`stdout: ${data}`);
+                    //console.log(`stdout: ${data}`);
                 });
                 
                 child.stderr.on('data', (data) => {
