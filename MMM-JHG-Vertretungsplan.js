@@ -21,6 +21,8 @@ Module.register("MMM-JHG-Vertretungsplan", {
        /* Log.log(JSON.stringify(this.config));
         Log.log(JSON.stringify(this.data));
         Log.log(this.file("fetch_jhg.py"));'*/
+        
+        this.sendSocketNotification("GET_VERTRETUNGEN", {"script_path": this.file("fetch_jhg.py"), "base_url": this.config.base_url, "home_url": this.config.home_url});
 
         this.vertretungen = {};
     },
@@ -38,8 +40,6 @@ Module.register("MMM-JHG-Vertretungsplan", {
 
             case "DOM_OBJECTS_CREATED":
                 Log.log("Starting...");
-
-                this.sendSocketNotification("GET_VERTRETUNGEN", {"script_path": this.file("fetch_jhg.py"), "base_url": this.config.base_url, "home_url": this.config.home_url});
 
                 var timer = setInterval(() => {
                     this.sendSocketNotification("GET_VERTRETUNGEN", {"script_path": this.file("fetch_jhg.py"), "base_url": this.config.base_url, "home_url": this.config.home_url});
