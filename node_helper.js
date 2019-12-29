@@ -21,8 +21,6 @@ module.exports = NodeHelper.create({
 
                 //var data = {"6b": "Keine Vertretungen"};
 
-
-
                 break;
         }
     },
