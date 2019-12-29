@@ -86,7 +86,7 @@ def _getVertretung(soup):
         vertretung = {}
         items = row.find_all("td")
         for i, item in enumerate(items):
-            vertretung[keys[i]] = unicode(item.text)
+            vertretung[keys[i]] = unicode(item.text.string)
         
         vertretungen.append(vertretung)
 
