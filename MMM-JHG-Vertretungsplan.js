@@ -22,7 +22,6 @@ Module.register("MMM-JHG-Vertretungsplan", {
         Log.log(JSON.stringify(this.data));
         Log.log(this.file("fetch_jhg.py"));'*/
 
-        this.sendSocketNotification("GET_VERTRETUNGEN", {"script_path": this.file("fetch_jhg.py"), "base_url": this.config.base_url, "home_url": this.config.home_url});
 
         this.vertretungen = {};
     },
@@ -33,19 +32,24 @@ Module.register("MMM-JHG-Vertretungsplan", {
 		return wrapper;
     },
 
+    notificationReceived: function(notification, payload) {
+        switch (notification) {
+
+            case "DOM_OBJECTS_CREATED":
+                this.sendSocketNotification("GET_VERTRETUNGEN", {"script_path": this.file("fetch_jhg.py"), "base_url": this.config.base_url, "home_url": this.config.home_url});
+                
+                var timer = setInterval(() => {
+                    this.sendSocketNotification("GET_VERTRETUNGEN", {"script_path": this.file("fetch_jhg.py"), "base_url": this.config.base_url, "home_url": this.config.home_url});
+                }, 2000);
+
+                break;
+
+    }
+
     socketNotificationReceived: function(notification, payload) {
         //Log.log(JSON.stringify(payload));
 
         switch (notification) {
-
-            case "DOM_OBJECTS_CREATED":
-                Log.log("Starting...");
-
-                var timer = setInterval(() => {
-                    this.sendSocketNotification("GET_VERTRETUNGEN", {"script_path": this.file("fetch_jhg.py"), "base_url": this.config.base_url, "home_url": this.config.home_url});
-                }, 2000);
-                break;
-
             case "GET_VERTRETUNGEN":
                 Log.log("updated");
                 this.vertretungen = payload;
