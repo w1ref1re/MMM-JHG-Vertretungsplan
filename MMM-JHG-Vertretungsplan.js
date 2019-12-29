@@ -14,17 +14,17 @@ Module.register("MMM-JHG-Vertretungsplan", {
         ]
     },*/
 
-    updateVertretungen: function() {
-        this.sendSocketNotification("GET_VERTRETUNGEN", {script: {path: ""}})
-    }, 
 
     start: function() {
         Log.log(this.name + " is started");
-        Log.log(this.path);
+        Log.log(JSON.stringify(this.config));
+        Log.log(JSON.stringify(this.data));
 
         this.vertretungen = {};
 
-        var timer = setInterval(this.updateVertretungen, 1000);
+        var timer = setInterval(() => {
+            this.sendSocketNotification("GET_VERTRETUNGEN", {script: {path: ""}})
+        }, 1000);
     },
 
     getDom: function() {
