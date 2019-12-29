@@ -15,6 +15,10 @@ Module.register("MMM-JHG-Vertretungsplan", {
         ]
     },*/
 
+    getStyles: function() {
+        return [this.file("style.css")]
+    },
+
 
     start: function() {
         Log.log(this.name + " is started");
@@ -67,27 +71,45 @@ Module.register("MMM-JHG-Vertretungsplan", {
 
         var table = document.createElement("table");
         table.setAttribute("id", "JHG-vertretungsplan-table");
+        table.className = "jhg-table";
 
         var row = document.createElement("tr");
+        row.className = "headline";
         for (var headline in data[0]) {
             var th = document.createElement("th");
-            th.innerHTML = headline;
+            var p = document.createElement("p");
+
+            th.appendChild(p);
+
+            p.innerHTML = headline;
             row.appendChild(th);
         }
 
         table.appendChild(row);
 
+        var i = 1;
         for (var vertretung in data) {
             var row = document.createElement("tr");
 
+            if (i % 2 == 0) {
+                row.className = "row-dark";
+            } else {
+                row.className = "row-light";
+            }
+
             for (var item in data[vertretung]) {
                 var td = document.createElement("td");
-                td.innerHTML = data[vertretung][item];
+                var p = document.createElement("p");
+
+                td.appendChild(p)
+
+                p.innerHTML = data[vertretung][item];
                 row.appendChild(td);
                 
             }
 
             table.appendChild(row);
+            i++;
         }
 
         return table
