@@ -23,10 +23,6 @@ Module.register("MMM-JHG-Vertretungsplan", {
         Log.log(this.file("fetch_jhg.py"));'*/
 
         this.vertretungen = {};
-
-        var timer = setInterval(() => {
-            this.sendSocketNotification("GET_VERTRETUNGEN", {script_path: this.file("fetch_jhg.py"), classes: this.config.classes, base_url: this.config.base_url, home_url: this.config.home_url})
-        }, 2000);
     },
 
     getDom: function() {
@@ -39,6 +35,11 @@ Module.register("MMM-JHG-Vertretungsplan", {
         //Log.log(JSON.stringify(payload));
 
         switch (notification) {
+
+           /* case "DOM_OBJECTS_CREATED":
+
+                break;*/
+
             case "GET_VERTRETUNGEN":
                 Log.log("updated");
                 this.vertretungen = payload;
@@ -51,10 +52,10 @@ Module.register("MMM-JHG-Vertretungsplan", {
 
     createTables: function(data) {
         var table = document.createElement("table");
-        table.setAttribute("id", c);
+        table.setAttribute("id", "JHG-vertretungsplan-table");
 
         var row = document.createElement("tr");
-        for (var headline in data[c][0]) {
+        for (var headline in data[0][0]) {
             var th = document.createElement("th");
             th.innerHTML = headline;
             row.appendChild(th);
