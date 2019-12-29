@@ -50,68 +50,33 @@ Module.register("MMM-JHG-Vertretungsplan", {
 
 
     createTables: function(data) {
+        var table = document.createElement("table");
+        table.setAttribute("id", c);
 
-        var createTH = (text) => {
+        var row = document.createElement("tr");
+        for (var headline in data[c][0]) {
             var th = document.createElement("th");
-            th.setAttribute("style", "border: 1px solid black;");
-            th.innerHTML = text;
-            return th
-        };
+            th.innerHTML = headline;
+            row.appendChild(th);
+        }
 
-        var createTable = () => {
-            var th = document.createElement("table");
-            th.setAttribute("style", "border: 1px solid black;");
-            return th
-        };
+        table.appendChild(row);
 
-        var createTD = (text) => {
-            var th = document.createElement("td");
-            th.setAttribute("style", "border: 1px solid black;");
-            th.innerHTML = text;
-            return th
-        };
-
-        var list = document.createElement("ul")
-        list.setAttribute("style", "list-style: none;");
-        
-        for (var c in data) {
-            var list_item = document.createElement("li");
-           // list_item.setAttribute("display", "inline");
-
-            var table = createTable();
-            table.setAttribute("id", c);
-
+        for (var vertretung in data[c]) {
             var row = document.createElement("tr");
-            for (var headline in data[c][0]) {
-                var th = createTH(headline);
-                row.appendChild(th);
-            }
 
+            for (var item in data[c][vertretung]) {
+                var td = document.createElement("td");
+                td.innerHTML(data[c][vertretung][item])
+                row.appendChild(td);
+                
+            }
 
             table.appendChild(row);
-
-            for (var vertretung in data[c]) {
-                var row = document.createElement("tr");
-
-                //console.log(data[c][vertretung]);
-
-                for (var item in data[c][vertretung]) {
-                    var td = createTD(data[c][vertretung][item]);
-                    row.appendChild(td);
-                    
-                    //console.log(item);
-                    //console.log(data[c][vertretung][item]);
-                }
-
-                table.appendChild(row);
-            }
-            
-            list_item.appendChild(table);
-            list.appendChild(list_item);
-
         }
-        
-        return list
+
+        return table
+
     },
 
 });

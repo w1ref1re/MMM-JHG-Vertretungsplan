@@ -13,8 +13,6 @@ module.exports = NodeHelper.create({
         switch(notification) {
             case "GET_VERTRETUNGEN":
 
-
-
                 const child = child_process.spawn("python3", [payload.script_path, payload.classes, payload.base_url, payload.home_url]);
 
                 child.stdout.on('data', (data) => {
