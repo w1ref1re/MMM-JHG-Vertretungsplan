@@ -12,7 +12,7 @@ module.exports = NodeHelper.create({
         switch(notification) {
             case "GET_VERTRETUNGEN":
                 
-                var p = spawn("python", [payload.script_path, payload.classes, payload.base_url, payload.home_url]);
+                var p = spawn("python3", [payload.script_path, payload.classes, payload.base_url, payload.home_url]);
                 
                 p.stdout.on("data", (data) => {
                     this.sendSocketNotification("GET_VERTRETUNGEN", data);
