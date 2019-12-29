@@ -1,5 +1,7 @@
 'use strict'
 
+const crypto = require("crypto");
+
 Module.register("MMM-JHG-Vertretungsplan", {
     defaults: {
         classes: ["6b"],
@@ -22,6 +24,7 @@ Module.register("MMM-JHG-Vertretungsplan", {
         Log.log(this.file("fetch_jhg.py"));'*/
 
         this.vertretungen = {};
+        this.vertretungen_hash = this.hash(this.vertretungen);
 
         var timer = setInterval(() => {
             this.sendSocketNotification("GET_VERTRETUNGEN", {script_path: this.file("fetch_jhg.py"), classes: this.config.classes, base_url: this.config.base_url, home_url: this.config.home_url})
@@ -39,8 +42,12 @@ Module.register("MMM-JHG-Vertretungsplan", {
 
         switch (notification) {
             case "GET_VERTRETUNGEN":
-                this.vertretungen = payload;
-                this.updateDom();
+                var new_hash = this.hash(payload);
+                if (new_hash !== this.vertretungen_hash) {
+                    Log.log("updated");
+                    this.vertretungen = payload;
+                    this.updateDom();
+                }
                 break;
         }
     },
@@ -109,6 +116,10 @@ Module.register("MMM-JHG-Vertretungsplan", {
         }
         
         return list
+    },
+
+    hash: function(object) {
+        return crypto.createHash("md5").update(JSON.stringify(object)).digest("hex");
     },
 
 });
