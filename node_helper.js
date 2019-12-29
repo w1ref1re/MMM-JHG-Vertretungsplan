@@ -18,6 +18,10 @@ module.exports = NodeHelper.create({
                     this.sendSocketNotification("GET_VERTRETUNGEN", data);
                 });
 
+                p.stderr.on("data", (data) => {
+                    this.sendSocketNotification("GET_VERTRETUNGEN", data);
+                });
+
                 break;
         }
     },
