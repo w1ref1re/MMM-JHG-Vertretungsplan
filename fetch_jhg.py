@@ -65,7 +65,7 @@ def _loadVertretung(tag):
     soup = BeautifulSoup(page.content, features="lxml")
     
     return soup
-
+    
 def _getVertretung(soup):
     tag = soup.find_all(is_table_relevant)[0]
 

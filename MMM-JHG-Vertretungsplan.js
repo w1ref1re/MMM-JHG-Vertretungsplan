@@ -36,10 +36,10 @@ Module.register("MMM-JHG-Vertretungsplan", {
         switch (notification) {
 
             case "DOM_OBJECTS_CREATED":
-                this.sendSocketNotification("GET_VERTRETUNGEN", {"script_path": this.file("fetch_jhg.py"), "base_url": this.config.base_url, "home_url": this.config.home_url});
+                this.sendSocketNotification("GET_VERTRETUNGEN", {"script_path": this.file("fetch_jhg.py"), "base_url": this.config.base_url, "home_url": this.config.home_url, "classes": this.config.classes});
                 
                 var timer = setInterval(() => {
-                    this.sendSocketNotification("GET_VERTRETUNGEN", {"script_path": this.file("fetch_jhg.py"), "base_url": this.config.base_url, "home_url": this.config.home_url});
+                    this.sendSocketNotification("GET_VERTRETUNGEN", {"script_path": this.file("fetch_jhg.py"), "base_url": this.config.base_url, "home_url": this.config.home_url, "classes": this.config.classes});
                 }, 2000);
 
                 break;
