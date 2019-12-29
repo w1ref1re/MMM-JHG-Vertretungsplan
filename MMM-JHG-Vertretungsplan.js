@@ -83,12 +83,14 @@ Module.register("MMM-JHG-Vertretungsplan", {
             var p = document.createElement("p");
 
             if (i % 2 == 0) {
-                th.className = "brighter";
+                th.className += "bright-col";
             }
             th.appendChild(p);
 
             p.innerHTML = headline;
             row.appendChild(th);
+            
+            i ++;
         }
 
         table.appendChild(row);
@@ -109,7 +111,7 @@ Module.register("MMM-JHG-Vertretungsplan", {
                 var p = document.createElement("p");
 
                 if (iii % 2 == 0) {
-                    td.className = "brighter";
+                    td.className += "bright-col";
                 }
 
                 td.appendChild(p)
@@ -117,6 +119,7 @@ Module.register("MMM-JHG-Vertretungsplan", {
                 p.innerHTML = data[vertretung][item];
                 row.appendChild(td);
                 
+                iii ++;
             }
 
             table.appendChild(row);

@@ -5,8 +5,8 @@
 .headline>td {
     padding-bottom: 2px;
     padding-top: 0;
-    padding-left: 4px;
-    padding-right: 4px;
+    padding-left: 8px;
+    padding-right: 8px;
 }
 
 .row {
@@ -21,6 +21,6 @@
     padding-right: 4px;
 }
 
-.brighter {
+.bright-col {
     background-color: #0f0f0f;
 }
