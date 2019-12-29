@@ -14,7 +14,7 @@ module.exports = NodeHelper.create({
                 
                 var p = spawn("python", [payload.script_path, payload.classes, payload.base_url, payload.home_url]);
                 
-                p.stdout.on("stdout", (data) => {
+                p.stdout.on("data", (data) => {
                     this.sendSocketNotification("GET_VERTRETUNGEN", data);
                 });
 
