@@ -32,7 +32,7 @@ Module.register("MMM-JHG-Vertretungsplan", {
 
     getDom: function() {
         var wrapper = document.createElement("div");
-        wrapper.className = "region";
+        wrapper.className = "container";
         wrapper.appendChild(this.createTables(this.vertretungen));
 		return wrapper;
     },
