@@ -79,8 +79,8 @@ def _getVertretung(soup):
     for row in rows[1:]:
         vertretung = {}
         items = row.find_all("td")
-        for i, item in enumerate(items):
-            vertretung[keys[i]] = item.text
+        #for i, item in enumerate(items):
+        #    vertretung[keys[i]] = item.text
         
         vertretungen.append(vertretung)
 
@@ -92,7 +92,7 @@ def _getVertretung(soup):
     #    if len(s) > 0:
     #        vertretungen.append(str(s))
 
-    return vertretungen
+    return keys
 
 def _cleanString(string):
     return string.replace("\n", "").replace("\r", "").replace("\xa0", "").strip()
