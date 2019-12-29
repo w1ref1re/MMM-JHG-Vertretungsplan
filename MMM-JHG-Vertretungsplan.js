@@ -43,8 +43,10 @@ Module.register("MMM-JHG-Vertretungsplan", {
                 }, 2000);
 
                 break;
+        
+            }
 
-    }
+    },
 
     socketNotificationReceived: function(notification, payload) {
         //Log.log(JSON.stringify(payload));
