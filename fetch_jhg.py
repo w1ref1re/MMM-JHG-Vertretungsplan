@@ -8,9 +8,9 @@ import sys
 
 config = {}
 
-classes = ["6b"]
+classes = ["8c"]
 
-base_url = "http://vertretungsplan.jhg-blaubeuren.de/schueler"
+base_url = "https://web.archive.org/web/20190210105358/http://vertretungsplan.jhg-blaubeuren.de/schueler"
 home_url = "Ver_Kla_1.htm"
 
 # bs4 find_all filter methods
@@ -41,7 +41,7 @@ def getVertretungen():
     '''
     page = requests.get("/".join([base_url, home_url]))    
 
-    soup = BeautifulSoup(page.content, features="lxml")
+    soup = BeautifulSoup(page.content)
 
     relevant_tags = soup.find_all(is_tag_relevant)
     #print(relevant_tags)
@@ -75,12 +75,18 @@ def _getVertretung(soup):
         return {}
 
     vertretungen = []
-    keys = rows[0]
+
+    keys = rows[0].find_all("td")
+
+
+    keys = [i.font.text for i in rows[0].find_all("td")]
+
+
     for row in rows[1:]:
         vertretung = {}
         items = row.find_all("td")
-        #for i, item in enumerate(items):
-        #    vertretung[keys[i]] = item.text
+        for i, item in enumerate(items):
+            vertretung[keys[i]] = item.text
         
         vertretungen.append(vertretung)
 
@@ -92,16 +98,16 @@ def _getVertretung(soup):
     #    if len(s) > 0:
     #        vertretungen.append(str(s))
 
-    return keys
+    return vertretungen
 
 def _cleanString(string):
     return string.replace("\n", "").replace("\r", "").replace("\xa0", "").strip()
 
 # node_helper is invoking the script
 if __name__ == "__main__":
-    classes = [sys.argv[1]]
-    base_url = sys.argv[2]
-    home_url = sys.argv[3]
+    #classes = [sys.argv[1]]
+    #base_url = sys.argv[2]
+    #home_url = sys.argv[3]
 
     #print(classes, base_url, home_url)
 
