@@ -74,7 +74,7 @@ Module.register("MMM-JHG-Vertretungsplan", {
         table.className = "jhg-table";
 
         var row = document.createElement("tr");
-        row.className = "headline";
+        row.className = "medium bold headline";
         for (var headline in data[0]) {
             var th = document.createElement("th");
             var p = document.createElement("p");
@@ -92,9 +92,9 @@ Module.register("MMM-JHG-Vertretungsplan", {
             var row = document.createElement("tr");
 
             if (i % 2 == 0) {
-                row.className = "row-dark";
+                row.className = "small regular normal row";
             } else {
-                row.className = "row-light";
+                row.className = "small regular bright row";
             }
 
             for (var item in data[vertretung]) {
