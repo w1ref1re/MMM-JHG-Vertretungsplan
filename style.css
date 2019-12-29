@@ -2,6 +2,16 @@
     text-align: center;
 }
 
+td {
+    padding-left: 4px;
+    padding-right: 4px;
+}
+
 .row {
     text-align: center;
+}
+
+.row > td {
+    padding-bottom: 2px;
+    padding-top: 0;
 }
