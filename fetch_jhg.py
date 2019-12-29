@@ -79,14 +79,14 @@ def _getVertretung(soup):
     keys = rows[0].find_all("td")
 
 
-    keys = [i.font.text for i in rows[0].find_all("td")]
+    keys = [_cleanString(i.font.text) for i in rows[0].find_all("td")]
 
 
     for row in rows[1:]:
         vertretung = {}
         items = row.find_all("td")
         for i, item in enumerate(items):
-            vertretung[keys[i]] = unicode(item.text.string)
+            vertretung[keys[i]] = _cleanString(item.text)
         
         vertretungen.append(vertretung)
 
@@ -105,9 +105,9 @@ def _cleanString(string):
 
 # node_helper is invoking the script
 if __name__ == "__main__":
-    #classes = [sys.argv[1]]
-    #base_url = sys.argv[2]
-    #home_url = sys.argv[3]
+    classes = [sys.argv[1]]
+    base_url = sys.argv[2]
+    home_url = sys.argv[3]
 
     #print(classes, base_url, home_url)
 
