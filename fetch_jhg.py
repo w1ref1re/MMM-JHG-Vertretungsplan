@@ -48,7 +48,7 @@ def getVertretungen():
 
     vertretungen = []
     if len(relevant_tags) == 0:
-        vertretungen.append({"Keine Vertretungen": "Keine Vertretungen"})
+        vertretungen = [{"Keine Vertretungen": "Keine Vertretungen"}]
 
     for relevant_tag in relevant_tags:
         vertretung_soup = _loadVertretung(relevant_tag)
