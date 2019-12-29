@@ -18,8 +18,8 @@ module.exports = NodeHelper.create({
                 const child = child_process.spawn("ls");
                 
                 child.stdout.on('data', (data) => {
+                    this.sendSocketNotification("GET_VERTRETUNGEN", `${data}`);
                     console.log(`stdout: ${data}`);
-                    this.sendSocketNotification("GET_VERTRETUNGEN", data);
                 });
                 
                 child.stderr.on('data', (data) => {
