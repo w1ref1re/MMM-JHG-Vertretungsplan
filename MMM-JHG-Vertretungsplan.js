@@ -23,7 +23,7 @@ Module.register("MMM-JHG-Vertretungsplan", {
 
         this.vertretungen = {};
 
-        var timer = setInterval(updateVertretungen, 1000);
+        var timer = setInterval(this.updateVertretungen, 1000);
     },
 
     getDom: function() {
