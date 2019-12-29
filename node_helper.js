@@ -20,7 +20,7 @@ module.exports = NodeHelper.create({
                 //const child = child_process.spawn("ls");
 
                 child.stdout.on('data', (data) => {
-                    this.sendSocketNotification("GET_VERTRETUNGEN", JSON.parse(str(data)));
+                    this.sendSocketNotification("GET_VERTRETUNGEN", JSON.parse(data));
                     //console.log(`stdout: ${data}`);
                 });
                 
