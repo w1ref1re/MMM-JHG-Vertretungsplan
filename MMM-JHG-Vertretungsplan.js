@@ -25,7 +25,7 @@ Module.register("MMM-JHG-Vertretungsplan", {
 
         var timer = setInterval(() => {
             this.sendSocketNotification("GET_VERTRETUNGEN", {script_path: "fetch_jhg.py", classes: this.config.classes, base_url: this.config.base_url, home_url: this.config.home_url})
-        }, 1000);
+        }, 5000);
     },
 
     getDom: function() {
@@ -39,7 +39,7 @@ Module.register("MMM-JHG-Vertretungsplan", {
 
         switch (notification) {
             case "GET_VERTRETUNGEN":
-                this.vertretungen = payload;
+                this.vertretungen = {"payload": payload};
                 this.updateDom();
                 break;
         }
