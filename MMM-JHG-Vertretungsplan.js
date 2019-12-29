@@ -15,11 +15,12 @@ Module.register("MMM-JHG-Vertretungsplan", {
     },*/
 
     updateVertretungen: function() {
-        this.sendSocketNotification("GET_VERTRETUNGEN", {script: {path: this.file("fetch_jhg.py")}})
+        this.sendSocketNotification("GET_VERTRETUNGEN", {script: {path: ""}})
     }, 
 
     start: function() {
         Log.log(this.name + " is started");
+        Log.log(this.path);
 
         this.vertretungen = {};
 
