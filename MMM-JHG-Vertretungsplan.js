@@ -75,7 +75,7 @@ Module.register("MMM-JHG-Vertretungsplan", {
         table.className = "table";
 
         var row = document.createElement("tr");
-        row.className = "medium headline";
+        row.className = "medium regular bright headline";
         for (var headline in data[0]) {
             var th = document.createElement("th");
             var p = document.createElement("p");
@@ -88,7 +88,7 @@ Module.register("MMM-JHG-Vertretungsplan", {
 
         table.appendChild(row);
 
-        var i = 1;
+        var i = 0;
         for (var vertretung in data) {
             var row = document.createElement("tr");
 
