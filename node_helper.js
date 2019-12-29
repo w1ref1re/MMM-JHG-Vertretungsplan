@@ -26,6 +26,7 @@ module.exports = NodeHelper.create({
                     console.log(this.old_hash == new_hash);
 
                     if (this.old_hash != this.new_hash) {
+                        console.log("yeehaw");
                         this.old_hash = new_hash;
                         //this.sendSocketNotification("GET_VERTRETUNGEN", JSON.parse(data));
                     }
