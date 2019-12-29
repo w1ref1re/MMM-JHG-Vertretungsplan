@@ -52,7 +52,7 @@ def getVertretungen():
 
     for relevant_tag in relevant_tags:
         vertretung_soup = _loadVertretung(relevant_tag)
-        vertretungen.append(_getVertretung(vertretung_soup))
+        vertretungen += (_getVertretung(vertretung_soup))
 
     return vertretungen, json.dumps(vertretungen)
 
