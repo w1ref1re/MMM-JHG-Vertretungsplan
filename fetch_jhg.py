@@ -46,13 +46,14 @@ def getVertretungen():
     relevant_tags = soup.find_all(is_tag_relevant)
     #print(relevant_tags)
 
-    vertretungen = []
+    vertretungen = {}
     if len(relevant_tags) == 0:
-        vertretungen = [{"Keine Vertretungen": "Keine Vertretungen"}]
+        for c in classes:
+            vertretungen[c] = "Keine Vertretungen"
 
     for relevant_tag in relevant_tags:
         vertretung_soup = _loadVertretung(relevant_tag)
-        vertretungen.append(_getVertretung(vertretung_soup))
+        vertretungen[str(relevant_tag.text).lower()] = _getVertretung(vertretung_soup)
 
     return vertretungen, json.dumps(vertretungen)
 
@@ -88,6 +89,8 @@ def _getVertretung(soup):
             vertretung[keys[i]] = _cleanString(item.text)
         
         vertretungen.append(vertretung)
+
+
 
     return vertretungen
 
